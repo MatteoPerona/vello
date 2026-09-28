@@ -31,6 +31,10 @@ cp templates/ideas.md      ideas.md
 cp templates/wiki-index.md wiki/index.md
 ```
 
-Then fill in `core/me.md` (or ask the agent to interview you and fill it in), and start a session from the `vello/` directory.
+Then start a session from the `vello/` directory and ask the agent to interview you to fill in the seeded files — `core/me.md` first, then `core/now.md`, `todo.md`, and any active projects. For example:
+
+> Interview me to fill in `core/me.md`. Ask one question at a time, then write the file.
+
+Don't fill the templates by hand; the interview surfaces the details the agent actually needs.
 
 Content doesn't sync through git. To move it between machines, copy the folder or use a private sync of your choice.
