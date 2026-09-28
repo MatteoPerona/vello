@@ -1,0 +1,16 @@
+# vello: structure is committed, content is not.
+
+# Root content files
+/todo.md
+/ideas.md
+
+# Content folders (keep the folders via .gitkeep)
+/core/*
+/projects/*
+/log/*
+/wiki/*
+!**/.gitkeep
+
+# OS / editor noise
+.DS_Store
+.obsidian/
