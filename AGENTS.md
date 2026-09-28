@@ -46,16 +46,27 @@ Never read the whole wiki or the whole log. Open the index, pick pages, stop.
 
 If a core file is missing, say so and offer to seed it from `templates/`.
 
+## Permissions
+
+| Edit freely, then tell me | Ask first: show the proposed change, wait for a yes |
+|---|---|
+| `log/`, `wiki/` (incl. `wiki/index.md`) | `core/` (`me.md`, `now.md`), `todo.md`, `ideas.md`, `projects/` |
+
+This applies everywhere, including the rituals below. An explicit request ("add X to my todos") counts as a yes for that change only.
+
 ## Session end ritual
 
 When I say we're done (or the session is clearly wrapping up):
 
 1. **Log** — append an entry to `log/YYYY-MM-DD.md` (create it from `templates/log.md` if missing): what happened, decisions made, files changed.
-2. **now.md** — rewrite `core/now.md` to reflect the current state of the week. Rewrite, don't append.
-3. **todo.md** — add new tasks, move finished ones to `## Done (recent)` with the date, reprioritize.
-4. **wiki/** — if a durable fact about me or my world came up, create/update the page and `wiki/index.md`.
-5. **projects/** — update any project file whose state changed; bump `updated`.
-6. **Summarize** in one paragraph what was written where.
+2. **wiki/** — if a durable fact about me or my world came up, create/update the page and `wiki/index.md`.
+3. **Propose, in one batch,** the ask-first changes:
+   - `core/now.md` — a rewrite reflecting the current state of the week (rewrite, don't append);
+   - `todo.md` — new tasks, finished ones moved to `## Done (recent)` with the date, reprioritization;
+   - `projects/` — updates to any project whose state changed (bump `updated`);
+   - `ideas.md`, `core/me.md` — only if something came up.
+   Apply only what I approve.
+4. **Summarize** in one paragraph what was written where.
 
 ## Routing: where new information goes
 
@@ -108,7 +119,7 @@ The wiki is about me and my world, built from our conversations and the log — 
 - Prefer editing an existing file over creating a new one.
 - One project per file.
 - `core/` stays under ~300 lines total. If it grows, move detail into the wiki and link it.
-- Tell me when you write to a file; don't make silent edits.
+- Tell me when you write to a file; don't make silent edits. Follow the Permissions table.
 
 ## Privacy
 
