@@ -11,7 +11,8 @@ vello (from *cervello*) is my personal context harness: plain markdown files des
 | `core/me.md` | Who I am, constraints, working style, what "good" looks like | Rarely |
 | `core/now.md` | This week: top 3 priorities, open loops, waiting on, blockers | Rewritten every session |
 | `todo.md` | Single prioritized todo list, all domains | Every session |
-| `ideas.md` | Ideas worth keeping that are not tasks | When ideas come up |
+| `ideas.md` | Index of ideas worth keeping that are not tasks | When ideas come up |
+| `ideas/*.md` | One file per idea that has been fleshed out (not yet a commitment) | When an idea gains depth |
 | `projects/*.md` | One file per project, any domain | When project state changes |
 | `log/YYYY-MM-DD.md` | Daily append-only record of sessions | Every session |
 | `wiki/index.md` + `wiki/*.md` | Durable knowledge about me and my world | When durable facts come up |
@@ -29,7 +30,7 @@ vello (from *cervello*) is my personal context harness: plain markdown files des
 | Which projects exist / are active | `projects/` — check frontmatter `status`; ignore `paused`/`done` unless asked |
 | A person, tool, system, or topic you lack context on | `wiki/index.md`, then only the relevant page(s) |
 | What happened on a given day, or why a decision was made | `log/YYYY-MM-DD.md` |
-| An idea or "something I wanted to try" | `ideas.md` |
+| An idea or "something I wanted to try" | `ideas.md`, then `ideas/<name>.md` if linked |
 | How I like to work, my constraints | `core/me.md` (already loaded) |
 
 Never read the whole wiki or the whole log. Open the index, pick pages, stop.
@@ -50,7 +51,7 @@ If a core file is missing, say so and offer to seed it from `templates/`.
 
 | Edit freely, then tell me | Ask first: show the proposed change, wait for a yes |
 |---|---|
-| `log/`, `wiki/` (incl. `wiki/index.md`) | `core/` (`me.md`, `now.md`), `todo.md`, `ideas.md`, `projects/` |
+| `log/`, `wiki/` (incl. `wiki/index.md`) | `core/` (`me.md`, `now.md`), `todo.md`, `ideas.md`, `ideas/`, `projects/` |
 
 This applies everywhere, including the rituals below. An explicit request ("add X to my todos") counts as a yes for that change only.
 
@@ -74,6 +75,7 @@ When I say we're done (or the session is clearly wrapping up):
 |---|---|
 | A concrete task | `todo.md` |
 | An idea, not yet a commitment | `ideas.md` |
+| An idea with real depth (architecture, open questions), still not a commitment | `ideas/<name>.md`, linked from its `ideas.md` entry |
 | An active effort with multiple steps | `projects/<name>.md` (+ its next action in `todo.md`) |
 | A durable fact about a person, tool, system, or pattern | `wiki/<page>.md` |
 | A durable fact about me (role, hours, hard constraint) | `core/me.md` — only if short; detail goes to the wiki |
@@ -88,7 +90,9 @@ If something is filed in the wrong place — a task in `ideas.md`, an idea in `t
 `- [ ] verb-first task — [work|biz|personal] — (project: name)` (project part optional).
 Done items: `- [x] task — [domain] — done YYYY-MM-DD`. If I add something vague, ask one clarifying question or rewrite it into a concrete next action and show me the rewrite.
 
-**ideas.md** — newest at top. Each entry: `### Idea title`, a date, 1–3 lines of description, and optionally `promoted to: [projects/x.md](projects/x.md)`.
+**ideas.md** — the index of ideas, newest at top. Each entry: `### Idea title`, a date, 1–3 lines of description, optionally `details: [ideas/x.md](ideas/x.md)`, and optionally `promoted to: [projects/x.md](projects/x.md)`.
+
+**ideas/** — one file per idea that outgrew 1–3 lines. Use `templates/idea.md`. Frontmatter `created`, `updated`. Filename: `kebab-case.md`. Always linked from its `ideas.md` entry. When the idea becomes an active effort, create the project and add `promoted to:` to both files; keep the idea file.
 
 **projects/** — frontmatter `domain`, `status` (active | paused | done), `updated`. Body: goal, current state, next action, links to wiki pages and log dates. Filename: `kebab-case.md`. Never delete paused/done projects; filter by status.
 
@@ -123,7 +127,7 @@ The wiki is about me and my world, built from our conversations and the log — 
 
 ## Privacy
 
-- All content (`core/`, `projects/`, `log/`, `wiki/`, `todo.md`, `ideas.md`) is gitignored and stays on this machine.
+- All content (`core/`, `projects/`, `log/`, `wiki/`, `ideas/`, `todo.md`, `ideas.md`) is gitignored and stays on this machine.
 - Only the structure is committed: `AGENTS.md`, `CLAUDE.md`, `README.md`, `.gitignore`, `templates/`, `.gitkeep` files.
 - Never `git add -f` content, never `git push` content, never modify `.gitignore` to expose content.
 - Never copy personal content into committed files (including templates and this file).
@@ -134,7 +138,7 @@ The wiki is about me and my world, built from our conversations and the log — 
 1. Trim `todo.md` `## Done (recent)` to the last two weeks.
 2. Re-sort `## Now` / `## Next` / `## Later`; flag stale items.
 3. Review `paused` projects: resume, keep paused, or mark done?
-4. Scan `ideas.md`: anything ready to promote to a project?
+4. Scan `ideas.md` (and linked `ideas/` files): anything ready to promote to a project?
 5. Check wiki pages for contradictions with each other or with `core/me.md`.
 6. Rewrite `core/now.md` for the coming week.
 7. Log the review in today's log.

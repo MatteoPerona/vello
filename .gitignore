@@ -9,7 +9,9 @@
 /projects/*
 /log/*
 /wiki/*
+/ideas/*
 /finance/
+/workspace/
 !**/.gitkeep
 
 # OS / editor noise
